@@ -1,4 +1,4 @@
--bash-4.1$ qrsh -l gpu=1 -l gpu_c=3.5
+-bash-4.1$ qrsh -l gpu=1 -l gpu_c=3.5  
 RSA host key for IP address '192.168.17.105' not in list of known hosts.
 ********************************************************************************
           This machine is governed by the University policy on ethics.
@@ -85,19 +85,3 @@ After a Python module is loaded this can now be loaded:
 
   module load keras/2.0.6
 -------------------------------------------------------------------------------
-
-
--bash-4.1$ 
--bash-4.1$ python       
-Python 3.6.2 (default, Aug 30 2017, 15:46:55) 
-[GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import tflearn
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ModuleNotFoundError: No module named 'tflearn'
->>> import tflearn
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ModuleNotFoundError: No module named 'tflearn'
->>> A
