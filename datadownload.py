@@ -11,7 +11,7 @@ data_url = 'https://www.kaggle.com/c/passenger-screening-algorithm-challenge/dow
 local_filename = "test.csv.zip"
 
 # Kaggle Username and Password
-kaggle_info = {'UserName': "gvikram", 'Password': "qwertyuiop"}
+kaggle_info = {'UserName': "gvikram", 'Password': "*******"}
 
 # Attempts to download the CSV file. Gets rejected because we are not logged in.
 r = requests.get(data_url)
