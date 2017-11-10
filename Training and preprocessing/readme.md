@@ -1,17 +1,3 @@
-# ec601_passenger_screening
-passenger screening algorithm for TSA. Aim: Improve the accuracy of existing threat prediction algorithms by TSA.
-
-#Code are available in separate branches.
-Web-site demo and developement codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/FrontEndWebDev
-Images preprocessing codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/peijia_branch
-Sample Machine Learning codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/Vikram_branch 
-
-Dataset for the project is provided by Kggle: https://www.kaggle.com/c/passenger-screening-algorithm-challenge/data
-
-- _.ahi = calibrated object raw data file (2.26GB per file)
-- _.aps = projected image angle sequence file (10.3MB per file)
-- _.a3d = combined image 3D file (330MB per file)
-- _.a3daps = combined image angle sequence file (41.2MB per file)
 
 We will be using .aps file for the initial phases of this project as .aps is minimum in the size among all four available formats.
 # .aps:-
