@@ -18,6 +18,9 @@ We will be using .aps file for the initial phases of this project as .aps is min
 
 # datadownload.py:
 - This file contains python scripts to download the dataset into BU cluster or some other remote server. This is highly customized     format to use it for your own dataset good amount of changes needed in this file.
- 
+
+# preprocess.py:
+- This python file contains the code to preprocess the images and prepare a dataset for the training of images.
+
 # Sampletrain.py:
 - This is the basic training file which contains a basic alexnet and how we can train our machine with different neural network layers. 
