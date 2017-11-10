@@ -17,7 +17,7 @@ We will be using .aps file for the initial phases of this project as .aps is min
 - Angular, 337920, Na=16, La=360-degrees
 
 # datadownload.py:
-- This file contains python scripts to download the dataset into BU cluster or some other remote server. This is highly customized     format to use it for your own dataset good amount of changes needed in this file.
+- This file contains python scripts to download the dataset into BU cluster or some other remote server. This is highly customized     format. To use it for your own dataset, good amount of changes will be needed in this file.
 
 # preprocess.py:
 - This python file contains the code to preprocess the images and prepare a dataset for the training of images.
