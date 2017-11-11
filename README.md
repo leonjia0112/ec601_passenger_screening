@@ -5,7 +5,8 @@ passenger screening algorithm for TSA. Aim: Improve the accuracy of existing thr
 
 - Web-site demo and developement codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/FrontEndWebDev
 - Images preprocessing codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/peijia_branch
-- Sample Machine Learning codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/Vikram_branch 
+- Sample Machine Learning codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/Vikram_branch. This branch's codes are also located in "Training and preprocessing" folder in master branch.
+
 
 Dataset for the project is provided by Kggle: https://www.kaggle.com/c/passenger-screening-algorithm-challenge/data
 
