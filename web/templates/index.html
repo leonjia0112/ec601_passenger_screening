@@ -90,11 +90,13 @@
       <div class="container">
         <div class="col-lg-8 mx-auto">
           <h2>Upload Source Image</h2>
-          <div class="input-group">
-            <input type="file" class="form-control input-lg" id ="imageName" accept="image/*">
-          </div>
-          <p></p>
-          <button class="btn btn-default btn-lg" id="submit">Upload Image</button>
+            <form method="post" enctype="multipart/form-data" action="/results" method="post">
+              <div class="input-group">
+                <input type="file" class="form-control input-lg" name ="imageName">
+              </div>
+              <p></p>
+              <input type="submit" class="btn btn-default btn-lg" id="submit" value="Upload Image" />
+            </form>
         </div>
       </div>
     </section>
