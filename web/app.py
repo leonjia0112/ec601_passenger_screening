@@ -49,9 +49,10 @@ def process_image():
             imgfile.save(os.path.join(app.config['UPLOAD_FOLDER'], photo_url))
 
             #reading img and run model get 17 Percentages
-
+            P = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
             cursor = conn.cursor()
-            cursor.execute("UPDATE IMAGE SET P1 = %f WHERE NAME = %s", (plist, imgname))
+            cursor.execute("UPDATE IMAGE SET P1 = %f,P2 = %f, P3 = %f,P4 = %f,P5 = %f,P6 = %f,P7 = %f,P8 = %f,P9 = %f,P10 = %f,P11 = %f,P12 = %f,P13 = %f,P14 = %f,P15 = %f,P16 = %f,P17 = %f,WHERE NAME = %s", 
+            				(P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16],P[17], imgname))
             conn.commit()
 
             return render_template('results.html', Perc=percent)
