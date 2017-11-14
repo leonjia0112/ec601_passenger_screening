@@ -19,8 +19,13 @@ app.config['MYSQL_DATABASE_DB'] = 'PASSENGERSCREENING'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
 
+# begin code used for login
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
 
-# begin photo uploading code
+conn = mysql.connect()
+
+
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 
