@@ -47,18 +47,19 @@ def process_image():
         cursor = conn.cursor()
         cursor.execute("SELECT ID FROM IMAGE WHERE NAME = %s", imgname)
         pid = cursor.fetchone()[0]
+        print(pid)
         photo_url = str(pid)+ "." + (imgname.rsplit('.', 1)[1])
         imgfile.save(os.path.join(app.config['UPLOAD_FOLDER'], photo_url))
         MD5 = CalcMD5(os.path.join(app.config['UPLOAD_FOLDER'], photo_url))
         cursor = conn.cursor()
-        cursor.execute("UPDATE IMAGE SET MD5 = %s WHERE NAME = %s", (MD5,imgname))
+        cursor.execute("UPDATE IMAGE SET MD5 = %s WHERE ID = %s", (MD5,pid))
         conn.commit()
 
         #reading img and run model get 17 Percentages
         P = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 
         cursor = conn.cursor()
-        cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE NAME = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], imgname))
+        cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE ID = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], pid))
         conn.commit()
 
         return render_template('results.html', Perc=P)
