@@ -40,6 +40,7 @@ def process_image():
     if request.method == 'POST':
         imgfile = request.files['imageName']
         imgname = imgfile.filename
+        print(imgname)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO IMAGE (NAME) VALUES (%s)", (imgname))
         conn.commit()
