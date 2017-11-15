@@ -35,7 +35,7 @@ def allowed_file(filename):
 UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/results', methods=['POST'])
+@app.route('/results', methods=['GET', 'POST'])
 def process_image():
     if request.method == 'POST':
         imgfile = request.files['imageName']
@@ -61,7 +61,11 @@ def process_image():
         				(P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16],P[17], imgname))
         conn.commit()
 
-        return render_template('results.html', Perc=percent)
+        return render_template('results.html', Perc=P)
+
+    else:
+    	P = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    	return render_template('results.html', Perc=P)
 
 
 # end photo uploading code
