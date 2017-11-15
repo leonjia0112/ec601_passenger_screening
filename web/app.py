@@ -8,6 +8,9 @@ import datetime
 import os, base64
 from hash import CalcMD5
 
+
+app.debug = True
+
 mysql = MySQL()
 app = Flask(__name__)
 app.secret_key = 'super secret string'
@@ -75,3 +78,5 @@ def process_image():
 @app.route("/", methods=['GET', 'POST'])
 def index():
     	return render_template('index.html')
+
+
