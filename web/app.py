@@ -8,9 +8,6 @@ import datetime
 import os, base64
 from hash import CalcMD5
 
-
-app.debug = True
-
 mysql = MySQL()
 app = Flask(__name__)
 app.secret_key = 'super secret string'
