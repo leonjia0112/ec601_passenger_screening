@@ -14,3 +14,7 @@ def CalcMD5(filepath):
         md5obj.update(f.read())
         hash = md5obj.hexdigest()
         return hash
+
+
+if __name__ == "__main__":
+    print(CalcMD5("/Users/zatl/Desktop/1.py"))
