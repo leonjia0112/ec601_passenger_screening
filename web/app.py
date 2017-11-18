@@ -19,38 +19,41 @@ app.config['MYSQL_DATABASE_DB'] = 'PASSENGERSCREENING'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
 
-# begin code used for login
-login_manager = flask_login.LoginManager()
-login_manager.init_app(app)
-
 conn = mysql.connect()
 
-
+#used for upload files with certain types; TODO
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
+#get all name from database
 def getName():
     cursor = conn.cursor()
     cursor.execute("SELECT NAME FROM IMAGE")
     return cursor.fetchall()
 
+#get all MD5 from database
 def getMD5(name):
     cursor = conn.cursor()
     cursor.execute("SELECT MD5 FROM IMAGE WHERE NAME = %s", name)
     return cursor.fetchone()[0]
 
+#Upload file path
 UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
+#backend code for results page
 @app.route('/results', methods=['GET', 'POST'])
 def process_image():
+    """if index post form to results page"""
     if request.method == 'POST':
         imgfile = request.files['imageName']
         imgname = imgfile.filename
         nameList = getName()
+        
+        #save file to uploads/
         imgfile.save(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
         MD5 = CalcMD5(os.path.join(app.config['UPLOAD_FOLDER'], imgname))
         print(imgname)
@@ -92,6 +95,7 @@ def process_image():
 
         
         return render_template('results.html', Perc=P)
+    #if use get method
     imgname = "test"
     index = 3
     MaxP = "93.7%"

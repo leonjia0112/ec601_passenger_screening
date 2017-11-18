@@ -249,3 +249,39 @@ img::-moz-selection {
 
 body {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2); }
+
+.staticcol {
+    padding: 0 20px;
+}
+.col--name {
+    width: 25%;
+    text-align: left;
+    line-height: 1.4;
+    font-family: Roboto;
+    color: #595959;
+    font-size: 13px;
+}
+.col--img {
+    width: 30%;
+    text-align: left;
+    line-height: 1.4;
+    font-family: Roboto;
+    color: #595959;
+    font-size: 13px;
+}
+.col--des {
+    width: 30%;
+    text-align: left;
+    line-height: 1.4;
+    font-family: Roboto;
+    color: #595959;
+    font-size: 13px;
+}
+.col--res {
+    width: 15%;
+    text-align: left;
+    line-height: 1.4;
+    font-family: Roboto;
+    color: #595959;
+    font-size: 13px;
+}
