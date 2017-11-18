@@ -92,6 +92,11 @@ def process_image():
 
         
         return render_template('results.html', Perc=P)
+    imgname = "test"
+    index = 3
+    MaxP = "93.7%"
+    P = [3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    return render_template('results.html', name = imgname, index = index, MaxP = MaxP, Perc = P)
 
 
 #index page
