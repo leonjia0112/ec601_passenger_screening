@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="../static/css/grayscale.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
 
   </head>
   <body id="page-top">
@@ -75,28 +76,30 @@
     <section id="result" class="content-section text-center">
       <div class="container">
           <h2>Detail Results</h2>
-          <div  style="position: sticky; top: 0px; z-index: 100;">
-	<div class="header" >
-		<div class="container" >
-			<div class="staticcol col--name" >
-				<p >Beer</p>
-				<p >Brewery</p>
+          <div class="row">
+			<div class="col-md-5 col-sm-12">
+				<table border="1" id="html5logo" class="table table-striped">
+					<caption style="caption-side:bottom;">HTML5 logo image size comparison</caption>
+					<tbody>
+						<tr>
+							<th>Region</th>
+							<th>Region Name</th>
+							<th>Percentage</th>
+						</tr>
+						{% for region,name, p item in zip(Region, regionName, P)}
+                        <tr>
+							<th>{{% region %}}</th>
+							<th>{{% name %}}</th>
+							<th>{{% p %}}</th>
+						</tr>
+                        {% endfor %}
+					</tbody>
+				</table>
 			</div>
-			<div class="staticcol col--img" >
-				<p >Type</p>
-				<p >ABV / IBU</p>
-			</div>
-			<div class="staticcol col--des" >
-				<p >Brewing country</p>
-				<p >Brewing region</p>
-			</div>
-			<div class="staticcol col--res" >
-				<p class="primary" >Last consumed</p>
-				<p class="secondary" >First consumed</p>
+			<div class="col-md-7 col-sm-12">
+				<div id="canvas_container"></div>
 			</div>
 		</div>
-	</div>
-</div>
 
 
 <!--
@@ -213,9 +216,11 @@
 
     <!-- Plugin JavaScript -->
     <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src='http:////cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js'></script>
 
     <!-- Custom scripts for this template -->
     <script src="../static/js/grayscale.min.js"></script>
+    <script  src="../static/js/index.js"></script>
 
   </body>
 

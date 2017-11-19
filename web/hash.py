@@ -14,3 +14,4 @@ def CalcMD5(filepath):
         md5obj.update(f.read())
         hash = md5obj.hexdigest()
         return hash
+      

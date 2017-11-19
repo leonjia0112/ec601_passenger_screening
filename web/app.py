@@ -21,6 +21,9 @@ mysql.init_app(app)
 
 conn = mysql.connect()
 
+Region = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+regionName = ["Right Bicep", "Right Forearm","Left Bicep","Left Forearm","Upper Chest","Right Rib Cage and Abs","Upper Right Hip/Thight","Groin", "Upper Left Hip/Thight","Lower Right Thight", "Lower Left Thight", "Right Calf", "Left Calf", "Right Ankle Bone","Left Anklwe Bone","Upper Back"]
+
 #used for upload files with certain types; TODO
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
@@ -94,13 +97,13 @@ def process_image():
                 print(P)
 
         
-        return render_template('results.html', Perc=P)
+        return render_template('results.html',Region = Region,regionName = regionName, P=P)
     #if use get method
     imgname = "test"
     index = 3
     MaxP = "93.7%"
     P = [3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-    return render_template('results.html', name = imgname, index = index, MaxP = MaxP, Perc = P)
+    return render_template('results.html', name = imgname, index = index, MaxP = MaxP,Region = Region,regionName = regionName, P=P)
 
 
 #index page
