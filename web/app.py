@@ -103,7 +103,7 @@ def process_image():
     index = 3
     MaxP = "93.7%"
     P = [3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-    return render_template('results.html', name = imgname, index = index, MaxP = MaxP,Region = Region,regionName = regionName, P=P)
+    return render_template('results.html', name = imgname, index = index, MaxP = MaxP, data = zip(Region, regionName, P))
 
 
 #index page

@@ -86,7 +86,7 @@
 							<th>Region Name</th>
 							<th>Percentage</th>
 						</tr>
-						{% for region,name, p in zip(Region, regionName, P) %}
+						{% for region,name, p in data: %}
                         <tr>
 							<th>{{ region }}</th>
 							<th>{{ name }}</th>
