@@ -22,7 +22,7 @@ mysql.init_app(app)
 conn = mysql.connect()
 
 Region = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
-regionName = ["Right Bicep", "Right Forearm","Left Bicep","Left Forearm","Upper Chest","Right Rib Cage and Abs","Upper Right Hip/Thight","Groin", "Upper Left Hip/Thight","Lower Right Thight", "Lower Left Thight", "Right Calf", "Left Calf", "Right Ankle Bone","Left Anklwe Bone","Upper Back"]
+regionName = ["Right Bicep", "Right Forearm","Left Bicep","Left Forearm","Upper Chest","Right Rib Cage and Abs","Left Rib Cage and Abs","Upper Right Hip/Thight","Groin", "Upper Left Hip/Thight","Lower Right Thight", "Lower Left Thight", "Right Calf", "Left Calf", "Right Ankle Bone","Left Ankle Bone","Upper Back"]
 
 #used for upload files with certain types; TODO
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
@@ -102,7 +102,7 @@ def process_image():
     imgname = "test"
     index = 3
     MaxP = "93.7%"
-    P = [3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    P = ["93.17%","0.02%","29.3%","29.9%","19.3%","42.3%","0.003%","9.3%","2.3%","69.3%","99.2%","2.456%","84.2%","22.3%","29.0%","19.3%","59.3%"]
     return render_template('results.html', name = imgname, index = index, MaxP = MaxP, data = zip(Region, regionName, P))
 
 
