@@ -37,7 +37,7 @@ $(function () {
     for (var i = 0; i < Quantity; i++) {
         var me = oData.devices[i];
         var y = (Quantity - i) * height;
-        var width = x + (me.ratio * scale);
+        var width = me.ratio * 0.01 * 350;
         var rectangle = paper.rect(x, y, 0, height * .9);
         rectangle.attr({
             fill: style.bg,
@@ -46,7 +46,7 @@ $(function () {
         });
         rectangle.animate({
             "width": width
-        }, 400 * me.ratio / 100);
+        }, 1000 * me.ratio / 30);
 
         var value = paper.text(width + x + 20, y + (height * .5), me.ratio)
         value.attr({
