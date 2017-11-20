@@ -1,5 +1,5 @@
 $(function () {
-    var paper = new Raphael(document.getElementById('canvas_container'), 600, 525);
+    var paper = new Raphael(document.getElementById('canvas_container'), 600, 800);
     // First convert TABLE data to objects
     var aRows = $('#html5logo tbody tr:not(:first-child)');
     var oData = {
@@ -46,7 +46,7 @@ $(function () {
         });
         rectangle.animate({
             "width": width
-        }, 1000 * me.ratio / 30);
+        }, 400 * me.ratio / 100);
 
         var value = paper.text(width + x + 20, y + (height * .5), me.ratio)
         value.attr({
