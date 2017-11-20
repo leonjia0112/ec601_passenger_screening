@@ -34,7 +34,7 @@ $(function () {
             'stroke': style.bg
         });
     }
-    for (var i = 0; i < length; i++) {
+    for (var i = 0; i < Quantity; i++) {
         var me = oData.devices[i];
         var y = (Quantity - i) * height;
         var width = x + (me.ratio * scale);
