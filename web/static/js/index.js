@@ -20,22 +20,23 @@ $(function () {
     var height = 40,
         x = 170,
         scale = 6,
-        length = oData.devices.length;
+        Quantity = oData.devices.length;
     var style = {
         bg: 'rgba(255,255,255,.4)',
         text: 'rgba(255,255,255,.9)',
         value: 'rgb(255,255,255)'
     }
+    console.log(Quantity);
     for (var i = 0; i < 50; i++) {
         var xx = x + (i * scale);
-        var line = paper.path('M ' + xx + ',15 L ' + xx + ',' + (height * length * 1.115));
+        var line = paper.path('M ' + xx + ',15 L ' + xx + ',' + (height * Quantity * 1.115));
         line.attr({
             'stroke': style.bg
         });
     }
     for (var i = 0; i < length; i++) {
         var me = oData.devices[i];
-        var y = (length - i) * height;
+        var y = (Quantity - i) * height;
         var width = x + (me.ratio * scale);
         var rectangle = paper.rect(x, y, 0, height * .9);
         rectangle.attr({
