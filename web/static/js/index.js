@@ -11,7 +11,7 @@ $(function () {
             device: $this.find('td:nth-child(2)').text(),
             ratio: $this.find('td:nth-child(3)').text()
         };
-        console.log(i, oData[i].device, oData[i].ratio);
+        console.log(i, oData.devices[i].device, oData.devices[i].ratio);
     }
     // Okay we got a table of: "Device","ratio"
     // We should now render it to SVG using Raphael
