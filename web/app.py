@@ -96,13 +96,15 @@ def process_image():
                 P = cursor.fetchall()[3:19]
                 print(P)
 
-        
-        return render_template('results.html',Region = Region,regionName = regionName, P=P)
+        index = 1
+        MaxP = "93.7"
+        P = ["93.17","0.02","29.3","29.9","19.3","42.3","0.003","9.3","2.3","69.3","99.2","2.456","84.2","22.3","29.0","19.3","59.3"]
+        return render_template('results.html',name = imgname, index = index, MaxP = MaxP,data = zip(Region, regionName, P))
     #if use get method
     imgname = "test"
     index = 3
     MaxP = "93.7%"
-    P = ["93.17%","0.02%","29.3%","29.9%","19.3%","42.3%","0.003%","9.3%","2.3%","69.3%","99.2%","2.456%","84.2%","22.3%","29.0%","19.3%","59.3%"]
+    P = ["93.17","0.02","29.3","29.9","19.3","42.3","0.003","9.3","2.3","69.3","99.2","2.456","84.2","22.3","29.0","19.3","59.3"]
     return render_template('results.html', name = imgname, index = index, MaxP = MaxP, data = zip(Region, regionName, P))
 
 
