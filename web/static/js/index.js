@@ -26,7 +26,7 @@ $(function () {
         text: 'rgba(255,255,255,.9)',
         value: 'rgb(255,255,255)'
     }
-    console.log(Quantity);
+    console.log("%d",Quantity);
     for (var i = 0; i < 50; i++) {
         var xx = x + (i * scale);
         var line = paper.path('M ' + xx + ',15 L ' + xx + ',' + (height * Quantity * 1.115));
