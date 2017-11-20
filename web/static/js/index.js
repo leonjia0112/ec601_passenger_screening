@@ -13,6 +13,11 @@ $(function () {
         };
         console.log(i, oData.devices[i].device, oData.devices[i].ratio);
     }
+    function sortNumber(a,b)
+    {
+        return a.ratio - b.ratio
+    }
+    oData.devices = oData.devices.sort(sortNumber)
     // Okay we got a table of: "Device","ratio"
     // We should now render it to SVG using Raphael
     // I choose to iterate data from 0..number of rows
