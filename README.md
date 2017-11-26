@@ -22,3 +22,8 @@ We will be using .aps file for the initial phases of this project as .aps is min
 - XAxis, 1, Nx=512, Lx=1.0 meters
 - YAxis, 512, Ny=660, Ly=2.0955 meters
 - Angular, 337920, Na=16, La=360-degrees
+
+# Aim of the project
+For every scan in the dataset, we will be predicting the probability that a threat is present in each of 17 body zones. A diagram of the body zone locations is available in the competition files section.
+
+![alt text](https://kaggle2.blob.core.windows.net/competitions/kaggle/6775/media/body_zone_descriptions.png)
