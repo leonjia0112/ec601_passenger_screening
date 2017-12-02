@@ -1,6 +1,7 @@
 
 
-# In[11]:
+# DON'T RUN THIS ON YOUR PC IT WILL TAKE FOREVER TO RUN.
+# to run this on PC Reduce the input data to as low as you can and then can be run
 
 
 # import libraries
@@ -27,6 +28,7 @@ import tsahelper as tsa
 
 # Get the assiged number of cores for this job. This is stored in
 # the NSLOTS variable, If NSLOTS is not defined throw an exception.
+# Comment line 31 to 36 if running on PC. These are setting for BU Cluster GPU requesting.
 def get_n_cores():
   nslots = os.getenv('NSLOTS')
   if nslots is not None:
@@ -76,18 +78,24 @@ def get_n_cores():
 INPUT_FOLDER = 'data'
 PREPROCESSED_DATA_FOLDER = 'data/pps/'
 STAGE1_LABELS = 'data/stage1_labels.csv'
-THREAT_ZONE = 14
-BATCH_SIZE = 64
-EXAMPLES_PER_SUBJECT = 182
-
+THREAT_ZONE = 14 #this is to select one of the 17 zones
+BATCH_SIZE = 64#batch size is size of data for train can be any value.
+## each images has 16 views. Each of 17 Zone is not visible in all 16 views.
+# Zone 1 is visible in:- 11 Zone 2 is visible in:- 11 Zone 3 is visible in:- 12
+# Zone 4 is visible in:- 12 Zone 5 is visible in:- 8 Zone 6 is visible in:- 9
+# Zone 7 is visible in:- 8 Zone 8 is visible in:- 11 Zone 9 is visible in:- 9
+# Zone 10 is visible in:- 8 Zone 11 is visible in:- 13 Zone 12 is visible in:- 14
+# Zone 13 is visible in:- 13 Zone 14 is visible in:- 10 Zone 15 is visible in:- 12
+# Zone 16 is visible in:- 13 Zone 17 is visible in:- 8 
+# Sum of above all is 182 
+EXAMPLES_PER_SUBJECT = 182 # total number of zones visible in all views per image
 FILE_LIST = []
 TRAIN_TEST_SPLIT_RATIO = 0.25
 TRAIN_SET_FILE_LIST = []
 TEST_SET_FILE_LIST = []
-
-IMAGE_DIM = 250
-LEARNING_RATE = 1e-3
-N_TRAIN_STEPS = 1
+IMAGE_DIM = 250 # Images reshape dimension which will be fed to the network as input
+LEARNING_RATE = 1e-3 #learning rate of the network
+N_TRAIN_STEPS = 1 # initialize the training steps
 TRAIN_PATH = 'Logs/train/'
 MODEL_PATH = 'Logs/model/'
 MODEL_NAME = ('tsa-{}-lr-{}-{}-{}-tz-{}'.format('alexnet-v0.1', LEARNING_RATE, IMAGE_DIM,
@@ -210,8 +218,8 @@ shuffle_train_set(TRAIN_SET_FILE_LIST)
 # returns:         none
 #
 #-------------------------------------------------------------------------------------
-
-def alexnet1(width, height, lr):
+# VGG Net is more layers network than AlexNet.
+def VGGnet1(width, height, lr):
     network = input_data(shape=[None, width, height, 1], name='features')
     network = conv_2d(network, 64, 3, activation='relu')
     network = conv_2d(network, 64, 3, activation='relu')
@@ -298,7 +306,7 @@ def train_conv_net():
     # get train and test batches
     get_train_test_file_list()
 
-    # instantiate model
+    # instantiate model either AlexNet or VGGNet
     model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
 
     # read in the validation test set
@@ -314,7 +322,8 @@ def train_conv_net():
     val_features = val_features.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
     print('validation batch shape ->', val_features.shape)
 
-
+# below commented lines are to extract data one by one and train them in same order
+# To use them uncomment line 328, 331, 334, 336, 338-340, 344-347 and comment 350-363
     # start training process
 #    for i in range(N_TRAIN_STEPS):
 
@@ -337,6 +346,7 @@ def train_conv_net():
 #                      shuffle=True, snapshot_step=20, show_metric=True,
 #                      run_id=MODEL_NAME)
 
+# Below is the process to shuffle the data and randonly assign them as test and train
     X = []
     Y = []    
     for i,all_f_in in enumerate(FILE_LIST):
@@ -353,6 +363,7 @@ def train_conv_net():
           snapshot_epoch=True, run_id='Alex_Net')	 
 
 # unit test -----------------------------------
+# Comment line 367 to 374 if running on PC. These are setting for BU Cluster GPU requesting.
 session_conf = tf.ConfigProto(
       intra_op_parallelism_threads=get_n_cores()-1,
       inter_op_parallelism_threads=1,
@@ -362,7 +373,3 @@ session_conf = tf.ConfigProto(
 sess = tf.Session(config=session_conf)
 tflearn.is_training(True, session=sess)
 train_conv_net()
-#testing the image
-# for f_in in TEST_SET_FILE_LIST:
-#     predictions = model.predict(f_in)
-#     print(predictions)
