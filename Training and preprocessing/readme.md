@@ -11,12 +11,10 @@ We will be using .aps file for the initial phases of this project as .aps is min
 - This file contains python scripts to download the dataset into BU cluster or some other remote server. This is highly customized     format. To use it for your own dataset, good amount of changes will be needed in this file.
 
 # preprocess.py:
-- This python file contains the code to preprocess the images and prepare a dataset for the training of images.
+- This python file contains the code to preprocess the images and prepare a dataset for the training of images. If run for the full dataset it will endup generating 121GB data in the PC.
 
 # Sampletrain.py:
 - This is the basic training file which contains a basic alexnet and how we can train our machine with different neural network layers. 
 
-# Train_Alex_All:
- - This file is written to use VGG Net and AlexNet with shuffled data. 
- 
- # 
+# Train_All.py:
+ - This file is written to use VGG Net and AlexNet with shuffled data. This will train for the full dataset.
