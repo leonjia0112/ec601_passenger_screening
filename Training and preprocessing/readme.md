@@ -15,3 +15,8 @@ We will be using .aps file for the initial phases of this project as .aps is min
 
 # Sampletrain.py:
 - This is the basic training file which contains a basic alexnet and how we can train our machine with different neural network layers. 
+
+# Train_Alex_All:
+ - This file is written to use VGG Net and AlexNet with shuffled data. 
+ 
+ # 
