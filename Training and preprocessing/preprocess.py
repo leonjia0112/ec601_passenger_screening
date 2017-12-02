@@ -1,8 +1,6 @@
-
+# Disclaimer:- I put lots of print statement so that user can know what is going in each step.
+# These prints can be commented.
 # coding: utf-8
-
-# In[11]:
-
 
 # import libraries
 from __future__ import print_function
@@ -12,7 +10,6 @@ import numpy as np
 import pandas as pd
 import os
 import re
-
 import tensorflow as tf
 # import tflearn
 # from tflearn.layers.conv import conv_2d, max_pool_2d
@@ -22,30 +19,35 @@ import tensorflow as tf
 
 import random
 from timeit import default_timer as timer
-print('modules loaded')
 import tsahelper as tsa
-
-
-# In[20]:
-
+#making sure that all modules are loaded
+print('modules loaded')
 
 #---------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------
 INPUT_FOLDER = 'data'
 PREPROCESSED_DATA_FOLDER = 'data/pps/'
 STAGE1_LABELS = 'data/stage1_labels.csv'
-THREAT_ZONE = 3
-BATCH_SIZE = 16
-EXAMPLES_PER_SUBJECT = 182
+THREAT_ZONE = 3 #this is to select one of the 17 zones
+BATCH_SIZE = 16 #batch size is size of data for train can be any value.
+## each images has 16 views. Each of 17 Zone is not visible in all 16 views.
+# Zone 1 is visible in:- 11 Zone 2 is visible in:- 11 Zone 3 is visible in:- 12
+# Zone 4 is visible in:- 12 Zone 5 is visible in:- 8 Zone 6 is visible in:- 9
+# Zone 7 is visible in:- 8 Zone 8 is visible in:- 11 Zone 9 is visible in:- 9
+# Zone 10 is visible in:- 8 Zone 11 is visible in:- 13 Zone 12 is visible in:- 14
+# Zone 13 is visible in:- 13 Zone 14 is visible in:- 10 Zone 15 is visible in:- 12
+# Zone 16 is visible in:- 13 Zone 17 is visible in:- 8 
+# Sum of above all is 182
+EXAMPLES_PER_SUBJECT = 182 # total number of zones visible in all views per image
 
 FILE_LIST = []
-TRAIN_TEST_SPLIT_RATIO = 0.3
+TRAIN_TEST_SPLIT_RATIO = 0.3 #30% images for testing. 70% for training
 TRAIN_SET_FILE_LIST = []
 TEST_SET_FILE_LIST = []
 
-IMAGE_DIM = 250
-LEARNING_RATE = 1e-3
-N_TRAIN_STEPS = 1
+IMAGE_DIM = 250 # Images reshape dimension which will be fed to the network as input
+LEARNING_RATE = 1e-3 #learning rate of the network
+N_TRAIN_STEPS = 1 # initialize the training steps
 TRAIN_PATH = 'Logs/train/'
 MODEL_PATH = 'Logs/model/'
 MODEL_NAME = ('tsa-{}-lr-{}-{}-{}-tz-{}'.format('alexnet-v0.1', LEARNING_RATE, IMAGE_DIM,
