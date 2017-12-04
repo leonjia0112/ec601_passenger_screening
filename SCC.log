@@ -1,0 +1,87 @@
+-bash-4.1$ qrsh -l gpu=1 -l gpu_c=3.5  
+RSA host key for IP address '192.168.17.105' not in list of known hosts.
+********************************************************************************
+          This machine is governed by the University policy on ethics.
+            http://www.bu.edu/tech/about/policies/computing-ethics/
+
+                   This machine is owned and administered by
+                               Boston University.
+
+ See the Research Computing web site for more information about our facilities.
+                   http://www.bu.edu/tech/support/research/
+
+                    For Cluster specific documentation see:
+       http://www.bu.edu/tech/support/research/computing-resources/scc/
+
+        Please send questions and report problems to "help@scc.bu.edu".
+
+********************************************************************************
+
+-bash-4.1$ module load tensorflow
+ 
+
+-------------------------------------------------------------------------------
+ERROR: tensorflow/r1.3 requires several additional modules. Run the following
+commands to load all of the dependencies (including this module):
+
+  module load python/2.7.13
+  # OR
+  module load python/3.6.2
+
+  module load cuda/8.0
+  module load cudnn/6.0
+  module load tensorflow/r1.3
+-------------------------------------------------------------------------------
+
+
+-bash-4.1$ ^C
+-bash-4.1$   module load python/3.6.2
+-bash-4.1$   module load cuda/8.0
+-bash-4.1$   module load cudnn/6.0
+-bash-4.1$   module load tensorflow/r1.3
+-bash-4.1$ ls
+00360f79fd6e02781457eda48f85da90.ahi  Data     Documents  Music       Pictures	Templates  cookies.txt	requirements.txt  tsahelper.py
+00360f79fd6e02781457eda48f85da90.aps  Desktop  Downloads  Pass_scren  Public	Videos	   core.10348	train.py
+-bash-4.1$ python train.py
+Traceback (most recent call last):
+  File "train.py", line 17, in <module>
+    import tflearn
+ModuleNotFoundError: No module named 'tflearn'
+-bash-4.1$ gedit train.py
+
+(gedit:103374): Gtk-WARNING **: cannot open display: 
+-bash-4.1$ nano train.py 
+-bash-4.1$ import keras
+import: unable to open X server `' @ error/import.c/ImportImageCommand/368.
+-bash-4.1$ module load keras
+ 
+
+-------------------------------------------------------------------------------
+ERROR: keras/2.0.6 requires a Python module to be loaded. 
+Run ONE of the following commands to load a supported Python version:
+  
+  module load python/2.7.13
+  # OR
+  module load python/3.6.1
+  
+After a Python module is loaded this can now be loaded:
+
+  module load keras/2.0.6
+-------------------------------------------------------------------------------
+
+
+-bash-4.1$   module load keras/2.0.6
+ 
+
+-------------------------------------------------------------------------------
+ERROR: keras/2.0.6 requires a Python module to be loaded. 
+Run ONE of the following commands to load a supported Python version:
+  
+  module load python/2.7.13
+  # OR
+  module load python/3.6.1
+  
+After a Python module is loaded this can now be loaded:
+
+  module load keras/2.0.6
+-------------------------------------------------------------------------------
