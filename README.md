@@ -1,5 +1,5 @@
 # ec601_passenger_screening
-passenger screening algorithm for TSA.
+Passenger Screening algorithm for Transportation Security Adminisistration(TSA) Authority of USA.
 # Aim of the project
 For every scan in the dataset, we will be predicting the probability that a threat is present in each of 17 body zones. A diagram of the body zone locations is available in the competition files section.
 
