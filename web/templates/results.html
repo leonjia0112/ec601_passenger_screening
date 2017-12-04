@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Team10">
+
+    <title>Passenger Screening</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/grayscale.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+
+  </head>
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="https://www.bu.edu/academics/eng/courses/eng-ec-601/">BU ECE EC601</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/#upload">Upload</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="mastheadresult">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              {% if name %}
+              <p class="intro-text" style="font-size: 200%;">Results For {{ name }}</p>
+              {% endif %}
+              {% if index %}
+              <h1 class="brand-heading">Threats : 
+                <br style="font-size: 300%;">Body Zone {{ index }}
+                <br>For {{ MaxP }}%</h1>
+              {% else %}
+              <h1 class="brand-heading">No Threat found!</h1>
+              {% endif %}
+              <a href="#result" class="btn btn-circle js-scroll-trigger">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+      
+    <section id="result" class="content-section text-center">
+      <div class="container">
+          <h2>Detail Results</h2>
+          <div class="row">
+			<div class="col-md-5 col-sm-12">
+				<table border="1" id="html5logo" class="table table-striped">
+					<caption style="caption-side:bottom;">From Alex Net</caption>
+					<tbody>
+						<tr>
+							<th>Region</th>
+							<th>Region Name</th>
+							<th>Percentage</th>
+						</tr>
+						{% for region,name, p in data %}
+                        <tr>
+							<td>{{ region }}</td>
+							<td>{{ name }}</td>
+							<td>{{ p }}</td>
+						</tr>
+                        {% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-7 col-sm-12">
+				<div id="canvas_container"></div>
+			</div>
+		</div>
+
+
+<!--
+            <div class="row">    
+            <div class="col-lg-6" style="background-color:#133926;">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Label:1</th>
+                    <th>Label:2</th>
+                    <th>Label:3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Label:4</td>
+                    <td>Label:5</td>
+                    <td>Label:6</td>
+                  </tr>
+                  <tr>
+                    <td>Label:7</td>
+                    <td>Label:8</td>
+                    <td>Label:9</td>
+                  </tr>
+                  <tr>
+                    <td>Label:10</td>
+                    <td>Label:11</td>
+                    <td>Label:12</td>
+                  </tr>
+                </tbody>
+              </table>
+            <div class="container" style="background-color:white;">
+              <h2>Input Image</h2>
+              <p>Some Text:</p>            
+  
+              <table>
+                <tr>
+                  <th><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></th>
+                  <th><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></th>
+                  <th><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></th>
+                  <th><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></th>
+                </tr>
+                <tr>
+                  <td><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></td>
+                  <td><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></td>
+                  <td><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></td>
+                  <td><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></td>
+                </tr>
+                <tr>
+                  <td><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></td>
+                  <td><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></td>
+                  <td><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></td>
+                  <td><img src="C:\Users\Aditya Singh\Documents\WebApp/BU-logo.png" class="img-rounded" alt="Cinque Terre" width="100" height="50"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+   
+          <div class="col-lg-6" style="background-color:#86b300;">
+            <table class="table">
+            <thead>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Label:1</th>
+                <th>Label:2</th>
+                <th>Label:3</th>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td>Label:4</td>
+                <td>Label:5</td>
+                <td>Label:6</td>
+              </tr>
+              <tr>
+                <td>Label:7</td>
+                <td>Label:8</td>
+                <td>Label:9</td>
+              </tr>
+              <tr>
+                <td>Label:10</td>
+                <td>Label:11</td>
+                <td>Label:12</td>
+              </tr>
+            </tbody>
+            </table>    
+            <div class="container" style="background-color:white;">
+            <h2>Output Image</h2>
+            <p>Some Text:</p>            
+  
+            <table>
+                <tr>
+                  <th><img src="C:\Users\Aditya Singh\Documents\WebApp/body_zones.png" class="img-rounded" alt="Cinque Terre" width="500" height="250"></th>
+                </tr>
+            </table>
+          </div>
+        </div>
+    </div>
+-->
+  </div>
+</section>
+  
+    <!-- Footer -->
+    <footer>
+      <div class="container text-center">
+        <p>Copyright &copy; EC601 Team10 2017</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src='http:////cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js'></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../static/js/grayscale.min.js"></script>
+    <script  src="../static/js/index.js"></script>
+
+  </body>
+
+</html>
+
