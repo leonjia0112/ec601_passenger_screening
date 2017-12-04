@@ -7,6 +7,12 @@ import datetime
 # from werkzeug import secure_filename
 import os, base64
 from hash import CalcMD5
+import threat_zone_predicting_runnable
+ 
+    
+INPUT_FOLDER = 'uploads/'
+PROCESSED_FOLDER = 'processed_image/'
+STAGE1_LABELS = 'stage1_labels.csv'
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -67,6 +73,23 @@ def process_image():
             cursor.execute("INSERT INTO IMAGE (NAME, MD5) VALUES (%s, %s)", (imgname, MD5))
             conn.commit()
             #running model
+            
+            input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
+                input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
+
+            # print(input_image)
+
+            model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
+            model.load(MODEL_PATH + MODEL_NAME + '-173')
+            result = model.predict(input_image)
+            left = 0
+            right = 0
+            for l, r in result:
+                left += l
+                right += r
+            
+            
+            
             P = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
             cursor = conn.cursor()
             cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE NAME = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], imgname))
@@ -85,6 +108,24 @@ def process_image():
                 cursor.execute("UPDATE IMAGE SET MD5 = %s WHERE ID = %s", (MD5,pid))
                 conn.commit()
                 #running model
+                
+                
+                input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
+                input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
+
+                # print(input_image)
+
+                model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
+                model.load(MODEL_PATH + MODEL_NAME + '-173')
+                result = model.predict(input_image)
+                left = 0
+                right = 0
+                for l, r in result:
+                    left += l
+                    right += r
+                
+                
+                
                 P = [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
                 cursor = conn.cursor()
                 cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE ID = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], pid))
