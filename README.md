@@ -28,3 +28,26 @@ We will be using .aps file for the initial phases of this project as .aps is min
 - YAxis, 512, Ny=660, Ly=2.0955 meters
 - Angular, 337920, Na=16, La=360-degrees
 
+# Training:-
+ - We trained the data for AlexNet and VGGNet. Below are the accuracies for each threat zone.
+ 
+| Threat Zone | Accuracy % |
+| --- | --- |
+| Zone1	| 91.99 |
+| Zone2	| 92.95 |
+| Zone3	| 94.11 |
+| Zone4	| 93.14 |
+| Zone5	| 93.04 |
+| Zone6	| 93.17 |
+| Zone7	| 93.54 |
+| Zone8	| 94.11 |
+| Zone9	| 93.84 |
+| Zone10	| 92.73 |
+| Zone11	| 95.18 |
+| Zone12	| 93.55 |
+| Zone13	| 93.68 |
+| Zone14	| 95.14 |
+| Zone15	| 93.66 |
+| Zone16	| 93.63 |
+| Zone17	| 93.37 |
+
