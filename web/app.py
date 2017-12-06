@@ -78,7 +78,9 @@ def process_image():
             P = []
             npynames = os.listdir(PROCESSED_FOLDER)
 #            for name in npynames:
-            P.append(md.run_model())
+            tmp = md.run_model()
+            for name in npynames:
+                P.append(tmp)
             print(P)
                             
             # print(input_image)
@@ -102,8 +104,10 @@ def process_image():
                 preprocess.preprocess_tsa_data(imgname)
                 P = []
                 npynames = os.listdir(PROCESSED_FOLDER)
+#                for name in npynames:
+                tmp = md.run_model()
                 for name in npynames:
-                    P.append(md.run_model())
+                    P.append(tmp)
 
                 # print(input_image)
 
