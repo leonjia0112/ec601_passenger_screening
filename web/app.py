@@ -7,8 +7,8 @@ import datetime
 # from werkzeug import secure_filename
 import os, base64
 from hash import CalcMD5
-import preeprocessor_one_image
-import threat_zone_predicting_runnable
+import preprocessor_one_image
+import threat_zone_predicting_runnable as md
  
     
 INPUT_FOLDER = 'uploads/'
@@ -75,26 +75,14 @@ def process_image():
             conn.commit()
             #running model
             preprocess_tsa_data(imgname)
-            
+            P = []
             npynames = os.listdir(PROCESSED_FOLDER)
             for name in npynames:
                 input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
                 input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
-
+                p.append(md.run_model())
+                            
             # print(input_image)
-
-                model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
-                model.load(MODEL_PATH + MODEL_NAME + '-173')
-                result = model.predict(input_image)
-                left = 0
-                right = 0
-                for l, r in result:
-                    left += l
-                    right += r
-            
-            
-            
-            P = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
             cursor = conn.cursor()
             cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE NAME = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], imgname))
             conn.commit()
@@ -112,25 +100,16 @@ def process_image():
                 cursor.execute("UPDATE IMAGE SET MD5 = %s WHERE ID = %s", (MD5,pid))
                 conn.commit()
                 #running model
-                
-                
-                input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
-                input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
+                preprocess_tsa_data(imgname)
+                P = []
+                npynames = os.listdir(PROCESSED_FOLDER)
+                for name in npynames:
+                    input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
+                    input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
+                    p.append(md.run_model())
 
                 # print(input_image)
 
-                model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
-                model.load(MODEL_PATH + MODEL_NAME + '-173')
-                result = model.predict(input_image)
-                left = 0
-                right = 0
-                for l, r in result:
-                    left += l
-                    right += r
-                
-                
-                
-                P = [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
                 cursor = conn.cursor()
                 cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE ID = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], pid))
                 conn.commit()
@@ -141,9 +120,11 @@ def process_image():
                 P = cursor.fetchall()[3:19]
                 print(P)
 
-        index = 11
-        MaxP = "99.2"
-        P = ["93.17","0.02","29.3","29.9","19.3","42.3","0.003","9.3","2.3","69.3","99.2","2.456","84.2","22.3","29.0","19.3","59.3"]
+#        index = 11
+#        MaxP = "99.2"
+#        P = ["93.17","0.02","29.3","29.9","19.3","42.3","0.003","9.3","2.3","69.3","99.2","2.456","84.2","22.3","29.0","19.3","59.3"]
+        MaxP = min(P)
+        index = P.index(MaxP)
         return render_template('results.html',name = imgname, index = index, MaxP = MaxP,data = zip(Region, regionName, P))
     #if use get method
     imgname = "test"
