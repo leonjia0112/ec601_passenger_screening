@@ -1,14 +1,14 @@
 # ec601_passenger_screening
 Passenger Screening algorithm for Transportation Security Adminisistration(TSA) Authority of USA.
-# Aim of the project
+### Aim of the project
 For every scan in the dataset, we will be predicting the probability that a threat is present in each of 17 body zones. A diagram of the body zone locations is available in the competition files section.
 
 ![alt text](https://kaggle2.blob.core.windows.net/competitions/kaggle/6775/media/body_zone_descriptions.png)
 
-###### Final versions of codes are in Master branch.
+### Final versions of codes are in Master branch.
 
-#All other versions of the Codes are available in separate branches.
-- Web-site demo and developement codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/FrontEndWebDev , https://github.com/leonjia0112/ec601_passenger_screening/tree/Flask_backend
+#All other versions of the Codes are available in separate branches. Please Check the below links.
+- Web-site demo and development codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/FrontEndWebDev , https://github.com/leonjia0112/ec601_passenger_screening/tree/Flask_backend
 - Images preprocessing codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/peijia_branch
 - Lite version Machine Learning codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/Vikram_branch. This branch's codes are also located in "Training and preprocessing" folder in master branch.
 
@@ -21,14 +21,14 @@ Dataset for the project is provided by Kggle: https://www.kaggle.com/c/passenger
 - _.a3daps = combined image angle sequence file (41.2MB per file)
 
 We will be using .aps file for the initial phases of this project as .aps is minimum in the size among all four available formats.
-# .aps:-
+## .aps:-
 - Data file order: AYX (angle, vertical axis, horizontal axis)
 - Axis Name, Stride, Number of samples, Axis Length
 - XAxis, 1, Nx=512, Lx=1.0 meters
 - YAxis, 512, Ny=660, Ly=2.0955 meters
 - Angular, 337920, Na=16, La=360-degrees
 
-# Training:-
+## Training:-
  - We trained the data for AlexNet and VGGNet. Below are the accuracies for each threat zone.
  
 | Threat Zone | Accuracy % |
