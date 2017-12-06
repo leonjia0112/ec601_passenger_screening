@@ -76,9 +76,9 @@ def get_n_cores():
 # MODEL_NAME                    Name of the model files
 #
 #----------------------------------------------------------------------------------------
-INPUT_FOLDER = 'data'
+#INPUT_FOLDER = 'data'
 PREPROCESSED_DATA_FOLDER = 'data/pps/'
-STAGE1_LABELS = 'data/stage1_labels.csv'
+#STAGE1_LABELS = 'data/stage1_labels.csv'
 THREAT_ZONE = 1
 BATCH_SIZE = 64
 EXAMPLES_PER_SUBJECT = 182
