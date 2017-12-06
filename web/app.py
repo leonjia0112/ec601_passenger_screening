@@ -78,7 +78,7 @@ def process_image():
             P = []
             npynames = os.listdir(PROCESSED_FOLDER)
             for name in npynames:
-                p.append(md.run_model())
+                P.append(md.run_model())
                             
             # print(input_image)
             cursor = conn.cursor()
@@ -102,7 +102,7 @@ def process_image():
                 P = []
                 npynames = os.listdir(PROCESSED_FOLDER)
                 for name in npynames:
-                    p.append(md.run_model())
+                    P.append(md.run_model())
 
                 # print(input_image)
 
