@@ -7,6 +7,7 @@ import datetime
 # from werkzeug import secure_filename
 import os, base64
 from hash import CalcMD5
+import preeprocessor_one_image
 import threat_zone_predicting_runnable
  
     
@@ -73,20 +74,23 @@ def process_image():
             cursor.execute("INSERT INTO IMAGE (NAME, MD5) VALUES (%s, %s)", (imgname, MD5))
             conn.commit()
             #running model
+            preprocess_tsa_data(imgname)
             
-            input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
+            npynames = os.listdir(PROCESSED_FOLDER)
+            for name in npynames:
+                input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
                 input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
 
             # print(input_image)
 
-            model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
-            model.load(MODEL_PATH + MODEL_NAME + '-173')
-            result = model.predict(input_image)
-            left = 0
-            right = 0
-            for l, r in result:
-                left += l
-                right += r
+                model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
+                model.load(MODEL_PATH + MODEL_NAME + '-173')
+                result = model.predict(input_image)
+                left = 0
+                right = 0
+                for l, r in result:
+                    left += l
+                    right += r
             
             
             

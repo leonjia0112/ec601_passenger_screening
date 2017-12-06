@@ -147,7 +147,7 @@ def main():
     # print(input_image)
 
     model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
-    model.load(MODEL_PATH + MODEL_NAME + '-173')
+    model.load(MODEL_PATH + MODEL_NAME + '-2310')
     result = model.predict(input_image)
     left = 0
     right = 0

@@ -67,6 +67,7 @@ def preprocess_tsa_data(infile):
                 # spread the spectrum to improve contrast
                 # print('-> spreading spectrum')
                 high_contrast_img = tsa.spread_spectrum(rescaled_img)
+                print("threshold\n")
                 # print('-> shape {}|mean={}'.format(high_contrast_img.shape,high_contrast_img.mean()))
 
                 # get the masked image
