@@ -75,9 +75,9 @@ def get_n_cores():
 # MODEL_NAME                    Name of the model files
 #
 #----------------------------------------------------------------------------------------
-INPUT_FOLDER = 'data'
+#INPUT_FOLDER = 'data'
 PREPROCESSED_DATA_FOLDER = 'data/pps/'
-STAGE1_LABELS = 'data/stage1_labels.csv'
+#STAGE1_LABELS = 'data/stage1_labels.csv'
 THREAT_ZONE = 14 #this is to select one of the 17 zones
 BATCH_SIZE = 64#batch size is size of data for train can be any value.
 ## each images has 16 views. Each of 17 Zone is not visible in all 16 views.
