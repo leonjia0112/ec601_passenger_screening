@@ -5,7 +5,8 @@ For every scan in the dataset, we will be predicting the probability that a thre
 
 ![alt text](https://kaggle2.blob.core.windows.net/competitions/kaggle/6775/media/body_zone_descriptions.png)
 
-# Final versions of codes are in Master branch.
+###### Final versions of codes are in Master branch.
+
 #All other versions of the Codes are available in separate branches.
 - Web-site demo and developement codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/FrontEndWebDev , https://github.com/leonjia0112/ec601_passenger_screening/tree/Flask_backend
 - Images preprocessing codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/peijia_branch
