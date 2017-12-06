@@ -24,7 +24,15 @@ print('modules loaded')
 INPUT_FOLDER = 'data'
 PREPROCESSED_DATA_FOLDER = 'data/pps_augmented/'
 STAGE1_LABELS = 'stage1_labels.csv'
-EXAMPLES_PER_SUBJECT = 182
+## each images has 16 views. Each of 17 Zone is not visible in all 16 views.
+# Zone 1 is visible in:- 11 Zone 2 is visible in:- 11 Zone 3 is visible in:- 12
+# Zone 4 is visible in:- 12 Zone 5 is visible in:- 8 Zone 6 is visible in:- 9
+# Zone 7 is visible in:- 8 Zone 8 is visible in:- 11 Zone 9 is visible in:- 9
+# Zone 10 is visible in:- 8 Zone 11 is visible in:- 13 Zone 12 is visible in:- 14
+# Zone 13 is visible in:- 13 Zone 14 is visible in:- 10 Zone 15 is visible in:- 12
+# Zone 16 is visible in:- 13 Zone 17 is visible in:- 8 
+# Sum of above all is 182
+EXAMPLES_PER_SUBJECT = 182 # total number of zones visible in all views per image
 BATCH_SIZE = 16
 FILE_LIST = []
 IMAGE_DIM = 250
