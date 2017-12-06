@@ -78,8 +78,6 @@ def process_image():
             P = []
             npynames = os.listdir(PROCESSED_FOLDER)
             for name in npynames:
-                input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
-                input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
                 p.append(md.run_model())
                             
             # print(input_image)
@@ -104,8 +102,6 @@ def process_image():
                 P = []
                 npynames = os.listdir(PROCESSED_FOLDER)
                 for name in npynames:
-                    input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
-                    input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
                     p.append(md.run_model())
 
                 # print(input_image)
