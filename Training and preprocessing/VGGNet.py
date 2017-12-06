@@ -214,7 +214,7 @@ shuffle_train_set(TRAIN_SET_FILE_LIST)
 #
 #-------------------------------------------------------------------------------------
 
-def alexnet1(width, height, lr):
+def VGGNet(width, height, lr):
     network = input_data(shape=[None, width, height, 1], name='features')
     network = conv_2d(network, 64, 3, activation='relu')
     network = conv_2d(network, 64, 3, activation='relu')
@@ -302,7 +302,7 @@ def train_conv_net():
     get_train_test_file_list()
 
     # instantiate model
-    model = alexnet1(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
+    model = VGGNet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
 
     # read in the validation test set
     for j, test_f_in in enumerate(TEST_SET_FILE_LIST):
@@ -317,8 +317,10 @@ def train_conv_net():
     val_features = val_features.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
     print('validation batch shape ->', val_features.shape)
 
+#Below commented part is to load the data by batch size(64x250x20) instead of dumping the full data (which is ~17000x250x250).
+#To run this code in PC it is better to uncomment 324,327,330,332,336,340-343 lines and comment lines 348-360.
 
-    # start training process
+# start training process
 #    for i in range(N_TRAIN_STEPS):
 
         # shuffle the train set files before each step
@@ -339,6 +341,7 @@ def train_conv_net():
 #                      validation_set=({'features': val_features}, {'labels': val_labels}),
 #                      shuffle=True, snapshot_step=20, show_metric=True,
 #                      run_id=MODEL_NAME)
+
 
     X = []
     Y = []    
