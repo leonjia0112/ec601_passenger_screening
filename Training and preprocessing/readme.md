@@ -21,3 +21,6 @@ We will be using .aps file for the initial phases of this project as .aps is min
 
 ### Train_All.py:
  - This file is written to use VGG Net and AlexNet with shuffled data. This will train for the full dataset.
+
+###tsahelper.py:
+ - This kernal is originally written by Brian Farrar. It was available in Kaggle kernals as the data best extraction file.
