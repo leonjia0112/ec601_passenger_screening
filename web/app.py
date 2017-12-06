@@ -7,7 +7,7 @@ import datetime
 # from werkzeug import secure_filename
 import os, base64
 from hash import CalcMD5
-import preprocessor_one_image
+import preprocessor_one_image as preprocess
 import threat_zone_predicting_runnable as md
  
     
@@ -74,7 +74,7 @@ def process_image():
             cursor.execute("INSERT INTO IMAGE (NAME, MD5) VALUES (%s, %s)", (imgname, MD5))
             conn.commit()
             #running model
-            preprocess_tsa_data(imgname)
+            preprocess.preprocess_tsa_data(imgname)
             P = []
             npynames = os.listdir(PROCESSED_FOLDER)
             for name in npynames:
@@ -100,7 +100,7 @@ def process_image():
                 cursor.execute("UPDATE IMAGE SET MD5 = %s WHERE ID = %s", (MD5,pid))
                 conn.commit()
                 #running model
-                preprocess_tsa_data(imgname)
+                preprocess.preprocess_tsa_data(imgname)
                 P = []
                 npynames = os.listdir(PROCESSED_FOLDER)
                 for name in npynames:
