@@ -1,7 +1,7 @@
 
 
 # DON'T RUN THIS ON YOUR PC IT WILL TAKE FOREVER TO RUN.
-# to run this on PC Reduce the input data to as low as you can and then can be run
+# to run this on PC Reduce the input data to as low as you can and then run
 
 
 # import libraries
