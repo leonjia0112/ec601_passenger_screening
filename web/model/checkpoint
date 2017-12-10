@@ -1,2 +1,0 @@
-model_checkpoint_path: "/media/leojia/PG-2/ec601/ec601_passenger_screening/tsa_logs/model/tsa-alexnet-v0.1-lr-0.001-250-250-tz-1-173"
-all_model_checkpoint_paths: "/media/leojia/PG-2/ec601/ec601_passenger_screening/tsa_logs/model/tsa-alexnet-v0.1-lr-0.001-250-250-tz-1-173"

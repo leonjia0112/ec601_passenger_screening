@@ -139,15 +139,17 @@ def alexnet(width, height, lr):
 
     return model
 
-def run_model():
-    input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
+def run_model(input_name,model_name):
+    tf.reset_default_graph()
+    input_image, input_image_label = input_pipeline(input_name, PROCESSED_FOLDER)
     input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
 
     # print(input_image)
 
     model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
-    model.load(MODEL_PATH + MODEL_NAME + '-2310')
+    model.load(MODEL_PATH + model_name)
     result = model.predict(input_image)
+    model.clear()
     left = 0
     right = 0
     for l, r in result:
@@ -157,7 +159,7 @@ def run_model():
     return res
 
 
-def main():
+def main(n):
     input_image, input_image_label = input_pipeline('input-tz1-250-250.npy', PROCESSED_FOLDER)
     input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
 
