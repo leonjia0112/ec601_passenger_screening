@@ -186,4 +186,4 @@ def main(n):
 
 
 if __name__ == '__main__':
-    print(run_model())
+    print(run_model('input-tz1-250-250.npy',0))
