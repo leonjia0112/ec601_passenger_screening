@@ -69,6 +69,7 @@ def process_image():
         print(imgname)
         print(nameList)
         if (imgname,) not in nameList:
+            print("function 1:")
             #new file
             cursor = conn.cursor()
             cursor.execute("INSERT INTO IMAGE (NAME, MD5) VALUES (%s, %s)", (imgname, MD5))
@@ -86,6 +87,7 @@ def process_image():
             cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE NAME = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], imgname))
             conn.commit()
         else:
+            print("function 2:")
             cursor = conn.cursor()
             cursor.execute("SELECT ID FROM IMAGE WHERE NAME = %s", imgname)
             pid = cursor.fetchone()[0]
@@ -109,6 +111,7 @@ def process_image():
                 cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE ID = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], pid))
                 conn.commit()
             else:
+                print("function 3:")
                 #old file
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM IMAGE WHERE ID = %s", pid)
