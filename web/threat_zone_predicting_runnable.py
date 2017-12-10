@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import os
 import re
+import sys
 
 import tensorflow as tf
 import tflearn
@@ -186,4 +187,4 @@ def main(n):
 
 
 if __name__ == '__main__':
-    print(run_model('input-tz1-250-250.npy',0))
+    print(run_model(sys.argv[1],sys.argv[2]))
