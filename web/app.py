@@ -115,9 +115,14 @@ def process_image():
                 #old file
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM IMAGE WHERE ID = %s", pid)
-                P = cursor.fetchall()[3:19]
-                print(P)
-
+                if cursor.rowcount is 0:
+                    preprocess.preprocess_tsa_data(imgname)
+                    P = []
+                    npynames = os.listdir(PROCESSED_FOLDER)
+                    for index, name in enumerate(npynames):
+                        P.append(md.run_model(name,str(index))
+                else:
+                    P = cursor.fetchall()[3:19] 
 #        index = 11
 #        MaxP = "99.2"
 #        P = ["93.17","0.02","29.3","29.9","19.3","42.3","0.003","9.3","2.3","69.3","99.2","2.456","84.2","22.3","29.0","19.3","59.3"]
