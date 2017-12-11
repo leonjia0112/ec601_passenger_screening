@@ -146,7 +146,7 @@ def run_model(input_name,model_name):
     input_image = input_image.reshape(-1, IMAGE_DIM, IMAGE_DIM, 1)
 
     # print(input_image)
-
+    model_name = str(model_name)
     model = alexnet(IMAGE_DIM, IMAGE_DIM, LEARNING_RATE)
     model.load(MODEL_PATH + model_name)
     result = model.predict(input_image)
