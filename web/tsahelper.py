@@ -30,7 +30,6 @@ sector07_pts = np.array([[256,300],[512,300],[512,360],[256,360]], np.int32)
 sector08_pts = np.array([[0,370],[225,370],[225,450],[0,450]], np.int32)
 sector09_pts = np.array([[225,370],[275,370],[275,450],[225,450]], np.int32)
 sector10_pts = np.array([[275,370],[512,370],[512,450],[275,450]], np.int32)
-
 sector11_pts = np.array([[0,450],[256,450],[256,525],[0,525]], np.int32)
 sector12_pts = np.array([[256,450],[512,450],[512,525],[256,525]], np.int32)
 sector13_pts = np.array([[0,525],[256,525],[256,600],[0,600]], np.int32)
@@ -59,49 +58,70 @@ sector_crop_list = [[ 50,  50, 250, 250], # sector 1
 
 # Each element in the zone_slice_list contains the sector to use in the call to roi()
 zone_slice_list = [ [ # threat zone 1
-                      sector01_pts, sector01_pts, sector01_pts, None, None, None, sector03_pts, sector03_pts, sector03_pts, sector03_pts, sector03_pts, None, None, sector01_pts, sector01_pts, sector01_pts ],       
+                      sector01_pts, sector01_pts, sector01_pts, None, None, None, sector03_pts, sector03_pts, 
+                      sector03_pts, sector03_pts, sector03_pts, None, None, sector01_pts, sector01_pts, sector01_pts ],       
                     [ # threat zone 2
-                      sector02_pts, sector02_pts, sector02_pts, None, None, None, sector04_pts, sector04_pts, sector04_pts, sector04_pts, sector04_pts, None, None, sector02_pts, sector02_pts, sector02_pts ],
+                      sector02_pts, sector02_pts, sector02_pts, None, None, None, sector04_pts, sector04_pts, 
+                      sector04_pts, sector04_pts, sector04_pts, None, None, sector02_pts, sector02_pts, sector02_pts ],
                     [ # threat zone 3
-                      sector03_pts, sector03_pts, sector03_pts, sector03_pts, None, None, sector01_pts, sector01_pts,sector01_pts, sector01_pts, sector01_pts, sector01_pts, None, None, sector03_pts, sector03_pts ],
+                      sector03_pts, sector03_pts, sector03_pts, sector03_pts, None, None, sector01_pts, sector01_pts,
+                      sector01_pts, sector01_pts, sector01_pts, sector01_pts, None, None, sector03_pts, sector03_pts ],
                     [ # threat zone 4
-                      sector04_pts, sector04_pts, sector04_pts, sector04_pts, None, None, sector02_pts, sector02_pts, sector02_pts, sector02_pts, sector02_pts, sector02_pts, None, None, sector04_pts, sector04_pts ],
+                      sector04_pts, sector04_pts, sector04_pts, sector04_pts, None, None, sector02_pts, sector02_pts, 
+                      sector02_pts, sector02_pts, sector02_pts, sector02_pts, None, None, sector04_pts, sector04_pts ],
                     [ # threat zone 5
-                      sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, None, None, None, None, None, None, None, None ],
+                      sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts,
+                      None, None, None, None, None, None, None, None ],
                     [ # threat zone 6
-                      sector06_pts, None, None, None, None, None, None, None, sector07_pts, sector07_pts, sector06_pts, sector06_pts, sector06_pts, sector06_pts, sector06_pts, sector06_pts ],
+                      sector06_pts, None, None, None, None, None, None, None, 
+                      sector07_pts, sector07_pts, sector06_pts, sector06_pts, sector06_pts, sector06_pts, sector06_pts, sector06_pts ],
                     [ # threat zone 7
-                      sector07_pts, sector07_pts, sector07_pts, sector07_pts, sector07_pts, sector07_pts, sector07_pts, sector07_pts, None, None, None, None, None, None, None, None ],
+                      sector07_pts, sector07_pts, sector07_pts, sector07_pts, sector07_pts, sector07_pts, sector07_pts, sector07_pts, 
+                      None, None, None, None, None, None, None, None ],
                     [ # threat zone 8
-                      sector08_pts, sector08_pts, None, None, None, None, None, sector10_pts, sector10_pts, sector10_pts, sector10_pts, sector10_pts, sector08_pts, sector08_pts, sector08_pts, sector08_pts ],
+                      sector08_pts, sector08_pts, None, None, None, None, None, sector10_pts, 
+                      sector10_pts, sector10_pts, sector10_pts, sector10_pts, sector08_pts, sector08_pts, sector08_pts, sector08_pts ],
                     [ # threat zone 9
-                      sector09_pts, sector09_pts, sector08_pts, sector08_pts, sector08_pts, None, None, None,sector09_pts, sector09_pts, None, None, None, None, sector10_pts, sector09_pts ],
+                      sector09_pts, sector09_pts, sector08_pts, sector08_pts, sector08_pts, None, None, None,
+                      sector09_pts, sector09_pts, None, None, None, None, sector10_pts, sector09_pts ],
                     [ # threat zone 10
-                      sector10_pts, sector10_pts, sector10_pts, sector10_pts, sector10_pts, sector08_pts, sector10_pts, None, None, None, None, None, None, None, None, sector10_pts ],
+                      sector10_pts, sector10_pts, sector10_pts, sector10_pts, sector10_pts, sector08_pts, sector10_pts, None, 
+                      None, None, None, None, None, None, None, sector10_pts ],
                     [ # threat zone 11
-                      sector11_pts, sector11_pts, sector11_pts, sector11_pts, None, None, sector12_pts, sector12_pts,sector12_pts, sector12_pts, sector12_pts, None, sector11_pts, sector11_pts, sector11_pts, sector11_pts ],
+                      sector11_pts, sector11_pts, sector11_pts, sector11_pts, None, None, sector12_pts, sector12_pts,
+                      sector12_pts, sector12_pts, sector12_pts, None, sector11_pts, sector11_pts, sector11_pts, sector11_pts ],
                     [ # threat zone 12
-                      sector12_pts, sector12_pts, sector12_pts, sector12_pts, sector12_pts, sector11_pts, sector11_pts, sector11_pts, sector11_pts, sector11_pts, sector11_pts, None, None, sector12_pts, sector12_pts, sector12_pts ],
+                      sector12_pts, sector12_pts, sector12_pts, sector12_pts, sector12_pts, sector11_pts, sector11_pts, sector11_pts, 
+                      sector11_pts, sector11_pts, sector11_pts, None, None, sector12_pts, sector12_pts, sector12_pts ],
                     [ # threat zone 13
-                      sector13_pts, sector13_pts, sector13_pts, sector13_pts, None, None, sector14_pts, sector14_pts,sector14_pts, sector14_pts, sector14_pts, None, sector13_pts, sector13_pts, sector13_pts, sector13_pts ],
+                      sector13_pts, sector13_pts, sector13_pts, sector13_pts, None, None, sector14_pts, sector14_pts,
+                      sector14_pts, sector14_pts, sector14_pts, None, sector13_pts, sector13_pts, sector13_pts, sector13_pts ],
                     [ # sector 14
-                      sector14_pts, sector14_pts, sector14_pts, sector14_pts, sector14_pts, None, sector13_pts, sector13_pts, sector13_pts, sector13_pts, sector13_pts, None, None, None, None, None ],
+                      sector14_pts, sector14_pts, sector14_pts, sector14_pts, sector14_pts, None, sector13_pts, sector13_pts, 
+                      sector13_pts, sector13_pts, sector13_pts, None, None, None, None, None ],
                     [ # threat zone 15
-                      sector15_pts, sector15_pts, sector15_pts, sector15_pts, None, None, sector16_pts, sector16_pts,sector16_pts, sector16_pts, None, sector15_pts, sector15_pts, None, sector15_pts, sector15_pts ],
+                      sector15_pts, sector15_pts, sector15_pts, sector15_pts, None, None, sector16_pts, sector16_pts,
+                      sector16_pts, sector16_pts, None, sector15_pts, sector15_pts, None, sector15_pts, sector15_pts ],
                     [ # threat zone 16
-                      sector16_pts, sector16_pts, sector16_pts, sector16_pts, sector16_pts, sector16_pts, sector15_pts, sector15_pts, sector15_pts, sector15_pts, sector15_pts, None, None, None, sector16_pts, sector16_pts ],
+                      sector16_pts, sector16_pts, sector16_pts, sector16_pts, sector16_pts, sector16_pts, sector15_pts, sector15_pts, 
+                      sector15_pts, sector15_pts, sector15_pts, None, None, None, sector16_pts, sector16_pts ],
                     [ # threat zone 17
                       None, None, None, None, None, None, None, None,
                       sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts, sector05_pts ] ]
 
 # Each element in the zone_slice_list contains the sector to use in the call to roi()
 zone_crop_list =  [ [ # threat zone 1
-                      sector_crop_list[0], sector_crop_list[0], sector_crop_list[0], None, None, None, sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], 
+                      sector_crop_list[0], sector_crop_list[0], sector_crop_list[0], None, None, None, 
+                      sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], 
                       None, None, sector_crop_list[0], sector_crop_list[0], sector_crop_list[0] ],       
                     [ # threat zone 2
-                      sector_crop_list[1], sector_crop_list[1], sector_crop_list[1], None, None, None, sector_crop_list[3],sector_crop_list[3], sector_crop_list[3], sector_crop_list[3], sector_crop_list[3], None, None,sector_crop_list[1], sector_crop_list[1], sector_crop_list[1] ],
+                      sector_crop_list[1], sector_crop_list[1], sector_crop_list[1], None, None, None, sector_crop_list[3],
+                      sector_crop_list[3], sector_crop_list[3], sector_crop_list[3], sector_crop_list[3], None, None,
+                      sector_crop_list[1], sector_crop_list[1], sector_crop_list[1] ],
                     [ # threat zone 3
-                      sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], None, None,sector_crop_list[0], sector_crop_list[0], sector_crop_list[0], sector_crop_list[0], sector_crop_list[0],sector_crop_list[0], None, None, sector_crop_list[2], sector_crop_list[2] ],
+                      sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], sector_crop_list[2], None, None,
+                      sector_crop_list[0], sector_crop_list[0], sector_crop_list[0], sector_crop_list[0], sector_crop_list[0],
+                      sector_crop_list[0], None, None, sector_crop_list[2], sector_crop_list[2] ],
                     [ # threat zone 4
                       sector_crop_list[3], sector_crop_list[3], sector_crop_list[3], sector_crop_list[3], None, None,
                       sector_crop_list[1], sector_crop_list[1], sector_crop_list[1], sector_crop_list[1], sector_crop_list[1],

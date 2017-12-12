@@ -7,6 +7,13 @@ import datetime
 # from werkzeug import secure_filename
 import os, base64
 from hash import CalcMD5
+import preprocessor_one_image as preprocess
+import threat_zone_predicting_runnable as md
+ 
+    
+INPUT_FOLDER = 'uploads/'
+PROCESSED_FOLDER = 'processed_image/'
+STAGE1_LABELS = 'stage1_labels.csv'
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -62,12 +69,20 @@ def process_image():
         print(imgname)
         print(nameList)
         if (imgname,) not in nameList:
+            print("function 1:")
             #new file
             cursor = conn.cursor()
             cursor.execute("INSERT INTO IMAGE (NAME, MD5) VALUES (%s, %s)", (imgname, MD5))
             conn.commit()
             #running model
-            P = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+            preprocess.preprocess_tsa_data(imgname)
+            P = []
+            npynames = os.listdir(PROCESSED_FOLDER)
+            for index, name in enumerate(npynames):
+                P.append(md.run_model(name,index))
+            print(P)
+                            
+            # print(input_image)
             cursor = conn.cursor()
             cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE NAME = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], imgname))
             conn.commit()
@@ -80,25 +95,39 @@ def process_image():
             print(MD5Ori)
             print(MD5)
             if MD5 is not MD5Ori:
+                print("function 2:")
                 #new file with same name
                 cursor = conn.cursor()
                 cursor.execute("UPDATE IMAGE SET MD5 = %s WHERE ID = %s", (MD5,pid))
                 conn.commit()
                 #running model
-                P = [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+                preprocess.preprocess_tsa_data(imgname)
+                P = []
+                npynames = os.listdir(PROCESSED_FOLDER)
+                for index, name in enumerate(npynames):
+                    P.append(md.run_model(name,index))
+                
                 cursor = conn.cursor()
                 cursor.execute("UPDATE IMAGE SET P1 = %s,P2 = %s, P3 = %s,P4 = %s,P5 = %s,P6 = %s,P7 = %s,P8 = %s,P9 = %s,P10 = %s,P11 = %s,P12 = %s,P13 = %s,P14 = %s,P15 = %s,P16 = %s,P17 = %s WHERE ID = %s", (P[0],P[1],P[2],P[3],P[4],P[5],P[6],P[7],P[8],P[9],P[10],P[11],P[12],P[13],P[14],P[15],P[16], pid))
                 conn.commit()
             else:
+                print("function 3:")
                 #old file
                 cursor = conn.cursor()
                 cursor.execute("SELECT * FROM IMAGE WHERE ID = %s", pid)
-                P = cursor.fetchall()[3:19]
-                print(P)
-
-        index = 11
-        MaxP = "99.2"
-        P = ["93.17","0.02","29.3","29.9","19.3","42.3","0.003","9.3","2.3","69.3","99.2","2.456","84.2","22.3","29.0","19.3","59.3"]
+                if cursor.rowcount is 0:
+                    preprocess.preprocess_tsa_data(imgname)
+                    P = []
+                    npynames = os.listdir(PROCESSED_FOLDER)
+                    for index, name in enumerate(npynames):
+                        P.append(md.run_model(name,index))
+                else:
+                    P = cursor.fetchall()[3:19] 
+#        index = 11
+#        MaxP = "99.2"
+#        P = ["93.17","0.02","29.3","29.9","19.3","42.3","0.003","9.3","2.3","69.3","99.2","2.456","84.2","22.3","29.0","19.3","59.3"]
+        MaxP = min(P)
+        index = P.index(MaxP)
         return render_template('results.html',name = imgname, index = index, MaxP = MaxP,data = zip(Region, regionName, P))
     #if use get method
     imgname = "test"
