@@ -5,9 +5,15 @@ For every scan in the dataset, we will be predicting the probability that a thre
 
 ![alt text](https://kaggle2.blob.core.windows.net/competitions/kaggle/6775/media/body_zone_descriptions.png)
 
-### Final versions of codes are in Master branch.
+### Final Product
+Website Link:http://ec2-18-217-245-195.us-east-2.compute.amazonaws.com:8080
+Preview:
+- Page1:
+![alt text](https://i.imgur.com/EP740Ok.jpg)
+- Page2:
+![alt text](https://i.imgur.com/pXu4Ozn.png)
 
-#All other versions of the Codes are available in separate branches. Please Check the below links.
+### Final versions of codes are in Master branch.All other versions of the Codes are available in separate branches. Please Check the below links.
 - Web-site demo and development codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/FrontEndWebDev , https://github.com/leonjia0112/ec601_passenger_screening/tree/Flask_backend
 - Images preprocessing codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/peijia_branch
 - Lite version Machine Learning codes are located at:- https://github.com/leonjia0112/ec601_passenger_screening/tree/Vikram_branch. This branch's codes are also located in "Training and preprocessing" folder in master branch.
@@ -52,5 +58,6 @@ We will be using .aps file for the initial phases of this project as .aps is min
 | Zone17	| 93.37 |
 
 ## Unit Test:-
-### We have finished unit test in our website,here is our unit test sheet:
+### We have finished unit test in our website,here is our unit test sheet and automatically test results:
  -https://docs.google.com/spreadsheets/d/1TRVQTAOrh1yoBVjL5CXdc05WejdTG9oMAG8MyT0Buc0/edit?usp=sharing
+ ![alt text](https://i.imgur.com/RLsHYrp.jpg)
